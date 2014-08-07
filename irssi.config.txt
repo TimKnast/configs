@@ -1,0 +1,27 @@
+Aliases:
+ - fifoc receiver sender:
+   Opens the fifo ~/.irssi/receiver:sender for
+   reading and sender:receiver for writing.
+   Intended for use with named pipes (fifos).
+   To enable chat between two users the pipes
+   must be accesdible by both users.
+   You can use symlinks to a pair of pipes in a
+   shared directory like /tmp, or you can use
+   hardlinks (recommended for security reasons)
+   e.g:
+     mkfifo /tmp/{$a:$b,$b:$a}
+     # both users execute:
+     link {/tmp,~/.irssi}/$a:$b
+     link {/tmp,~/.irssi}/$b:$a
+     # pray no one evil did the same
+     rm /tmp/{$a:$b,$b:$a}
+   in irssi:
+     /fifoc friend mynick
+
+   Note: Output will be printed to main window
+   if a chat window is closed.
+   To reopen window: /refifoc friend mynick
+   To kill a conversation: /hup friend:mynick
+
+
+
